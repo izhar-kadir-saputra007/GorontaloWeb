@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Users, Clock, Award } from "lucide-react";
+import { Star, Users, Clock, Award, Gift, Zap } from "lucide-react";
 
 const reasons = [
   {
@@ -65,10 +65,18 @@ const WhyUs = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-20 bg-gradient-to-r from-primary/10 to-[hsl(338,100%,50%)]/10 rounded-3xl p-8 md:p-12 border border-primary/20"
+          className="mt-20 bg-gradient-to-r from-primary/10 to-[hsl(338,100%,50%)]/10 rounded-3xl p-8 md:p-12 border border-primary/20 relative overflow-hidden"
         >
-          <div className="text-center">
-            <div className="text-6xl mb-4">🎉</div>
+          {/* Animated background elements */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-10 left-10 w-32 h-32 bg-primary rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-10 right-10 w-40 h-40 bg-accent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          </div>
+          
+          <div className="text-center relative z-10">
+            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary to-[hsl(338,100%,50%)] flex items-center justify-center animate-glow-pulse">
+              <Gift className="w-10 h-10 text-white" />
+            </div>
             <h3 className="text-3xl font-bold mb-4 text-foreground">
               Promo Spesial untuk 10 Klien Pertama!
             </h3>
@@ -76,7 +84,8 @@ const WhyUs = () => {
               Dapatkan diskon hingga <span className="text-primary font-bold">20%</span> dan bonus maintenance gratis 6 bulan
             </p>
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent/20 border border-accent">
-              <span className="text-accent font-semibold">⚡ Limited Time Offer</span>
+              <Zap className="w-5 h-5 text-accent" />
+              <span className="text-accent font-semibold">Limited Time Offer</span>
             </div>
           </div>
         </motion.div>
