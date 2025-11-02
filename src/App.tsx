@@ -7,6 +7,13 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Index from "./pages/Index";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
+import { HelmetProvider } from "react-helmet-async";
+
+// Import komponen baru untuk sistem pembayaran
+
+import ProjectSubmission from "@/pages/ProjectSubmission";
+import Payment from "@/pages/PaymentPage";
+//import PaymentSuccess from "./pages/PaymentSuccess";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,12 +31,21 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/terms" element={<Terms />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <HelmetProvider>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/terms" element={<Terms />} />
+                
+                {/* Routes untuk Sistem Pembayaran */}
+          
+                <Route path="/project-submission" element={<ProjectSubmission />} />
+                <Route path="/payment" element={<Payment />} />
+                {/* <Route path="/payment/success" element={<PaymentSuccess />} /> */}
+                
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </HelmetProvider>
           </BrowserRouter>
         </div>
       </TooltipProvider>
