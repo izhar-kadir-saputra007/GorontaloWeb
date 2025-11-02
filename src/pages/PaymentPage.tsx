@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { NavLink } from "react-router-dom";
 import { 
   CreditCard, 
   QrCode, 
@@ -76,11 +75,7 @@ const PaymentPage = () => {
   const [projectData, setProjectData] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [agreements, setAgreements] = useState({
-    terms: false,
-    privacy: false,
-    payment: false
-  });
+  const [agreeToTerms, setAgreeToTerms] = useState(false);
 
   useEffect(() => {
     const storedProjectData = localStorage.getItem('projectData');
@@ -129,18 +124,9 @@ const PaymentPage = () => {
     window.open(whatsappUrl, '_blank');
   };
 
-  const handleAgreementChange = (key: string) => {
-    setAgreements(prev => ({
-      ...prev,
-      [key]: !prev[key]
-    }));
-  };
-
-  const allAgreementsAccepted = Object.values(agreements).every(Boolean);
-
   const handlePaymentConfirmation = () => {
-    if (!allAgreementsAccepted) {
-      alert("Harap setujui semua persyaratan sebelum melanjutkan pembayaran.");
+    if (!agreeToTerms) {
+      alert("Harap setujui Syarat & Ketentuan sebelum melanjutkan pembayaran.");
       return;
     }
     setShowConfirmation(true);
@@ -159,7 +145,7 @@ const PaymentPage = () => {
         status: 'pending',
         paymentDate: new Date().toISOString(),
         orderId: `WC-${Date.now().toString().slice(-6)}`,
-        agreements: agreements // Simpan persetujuan
+        agreedToTerms: agreeToTerms
       };
 
       localStorage.setItem('paymentData', JSON.stringify(paymentData));
@@ -196,7 +182,14 @@ const PaymentPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-8"
         >
-         
+          <Button
+            variant="ghost"
+            onClick={() => navigate('/project-submission')}
+            className="mb-4"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Kembali ke Form
+          </Button>
           <h1 className="text-3xl font-bold mb-2">
             Pembayaran <span className="text-primary">Down Payment</span>
           </h1>
@@ -314,7 +307,35 @@ const PaymentPage = () => {
             </Card>
 
             {/* Important Information */}
-            
+            <Card className="p-6 bg-amber-50 border-amber-200 dark:bg-amber-950/20 dark:border-amber-800">
+              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2 text-amber-900 dark:text-amber-100">
+                <AlertTriangle className="w-5 h-5" />
+                Informasi Penting
+              </h3>
+              <div className="space-y-3 text-sm">
+                <div className="flex items-start gap-3">
+                  <ShieldCheck className="w-4 h-4 text-amber-600 dark:text-amber-400 mt-0.5" />
+                  <div>
+                    <p className="font-medium text-amber-800 dark:text-amber-200">Data Aman Terlindungi</p>
+                    <p className="text-amber-700 dark:text-amber-300">Informasi pribadi Anda tidak akan dibagikan ke pihak lain</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Clock className="w-4 h-4 text-amber-600 dark:text-amber-400 mt-0.5" />
+                  <div>
+                    <p className="font-medium text-amber-800 dark:text-amber-200">Proses Cepat</p>
+                    <p className="text-amber-700 dark:text-amber-300">Pengerjaan dimulai 1x24 jam setelah pembayaran dikonfirmasi</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Star className="w-4 h-4 text-amber-600 dark:text-amber-400 mt-0.5" />
+                  <div>
+                    <p className="font-medium text-amber-800 dark:text-amber-200">Garansi Kepuasan</p>
+                    <p className="text-amber-700 dark:text-amber-300">Revisi hingga Anda puas dengan hasil website</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
           </motion.div>
 
           {/* Payment Methods */}
@@ -442,41 +463,32 @@ const PaymentPage = () => {
                   </p>
                 </div>
 
-                {/* Agreement Checkboxes */}
+                {/* Agreement Checkbox */}
                 <Card className="p-4 bg-secondary/20 border-border">
-                  <h4 className="font-semibold mb-3 flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-primary" />
-                    Persetujuan
-                  </h4>
-                  <div className="space-y-3">
-                   <div className="flex items-start gap-3">
-  <Checkbox
-    id="terms"
-    checked={agreements.terms}
-    onCheckedChange={() => handleAgreementChange('terms')}
-  />
-  <label htmlFor="terms" className="text-sm leading-tight cursor-pointer">
-    Saya setuju dengan{" "}
-    <NavLink 
-      to="/terms" 
-      className="text-primary hover:underline font-medium"
-    >
-      Syarat & Ketentuan
-    </NavLink>{" "}
-    yang berlaku
-  </label>
-</div>
-                    
-                    
-                    
-                    
+                  <div className="flex items-start gap-3">
+                    <Checkbox
+                      id="terms"
+                      checked={agreeToTerms}
+                      onCheckedChange={() => setAgreeToTerms(!agreeToTerms)}
+                    />
+                    <label htmlFor="terms" className="text-sm leading-tight cursor-pointer flex-1">
+                      Saya setuju dengan{" "}
+                      <NavLink 
+                        to="/terms" 
+                        className="text-primary hover:underline font-medium"
+                        target="_blank"
+                      >
+                        Syarat & Ketentuan
+                      </NavLink>{" "}
+                      yang berlaku termasuk kebijakan pembayaran 50% DP dan kebijakan privasi
+                    </label>
                   </div>
                 </Card>
 
                 {/* Pay Button */}
                 <Button 
                   onClick={handlePaymentConfirmation}
-                  disabled={isProcessing || !allAgreementsAccepted}
+                  disabled={isProcessing || !agreeToTerms}
                   className="w-full mt-4"
                   size="lg"
                 >
@@ -485,14 +497,14 @@ const PaymentPage = () => {
                   ) : (
                     <>
                       <CheckCircle className="w-5 h-5 mr-2" />
-                      {allAgreementsAccepted ? "Bayar Sekarang" : "Setujui Persyaratan"}
+                      {agreeToTerms ? "Bayar Sekarang" : "Setujui Syarat & Ketentuan"}
                     </>
                   )}
                 </Button>
 
-                {!allAgreementsAccepted && (
+                {!agreeToTerms && (
                   <p className="text-xs text-amber-600 text-center mt-2">
-                    Harap setujui semua persyaratan di atas
+                    Harap setujui Syarat & Ketentuan sebelum melanjutkan
                   </p>
                 )}
               </div>
