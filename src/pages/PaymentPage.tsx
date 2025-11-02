@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { NavLink } from "react-router-dom";
 import { 
   CreditCard, 
   QrCode, 
@@ -448,42 +449,27 @@ const PaymentPage = () => {
                     Persetujuan
                   </h4>
                   <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <Checkbox
-                        id="terms"
-                        checked={agreements.terms}
-                        onCheckedChange={() => handleAgreementChange('terms')}
-                      />
-                      <label htmlFor="terms" className="text-sm leading-tight cursor-pointer">
-                        Saya setuju dengan{" "}
-                        <a href="/terms" className="text-primary hover:underline font-medium">
-                          Syarat & Ketentuan
-                        </a>{" "}
-                        yang berlaku
-                      </label>
-                    </div>
+                   <div className="flex items-start gap-3">
+  <Checkbox
+    id="terms"
+    checked={agreements.terms}
+    onCheckedChange={() => handleAgreementChange('terms')}
+  />
+  <label htmlFor="terms" className="text-sm leading-tight cursor-pointer">
+    Saya setuju dengan{" "}
+    <NavLink 
+      to="/terms" 
+      className="text-primary hover:underline font-medium"
+    >
+      Syarat & Ketentuan
+    </NavLink>{" "}
+    yang berlaku
+  </label>
+</div>
                     
-                    <div className="flex items-start gap-3">
-                      <Checkbox
-                        id="privacy"
-                        checked={agreements.privacy}
-                        onCheckedChange={() => handleAgreementChange('privacy')}
-                      />
-                      <label htmlFor="privacy" className="text-sm leading-tight cursor-pointer">
-                        Saya setuju dengan kebijakan privasi dan penyimpanan data
-                      </label>
-                    </div>
                     
-                    <div className="flex items-start gap-3">
-                      <Checkbox
-                        id="payment"
-                        checked={agreements.payment}
-                        onCheckedChange={() => handleAgreementChange('payment')}
-                      />
-                      <label htmlFor="payment" className="text-sm leading-tight cursor-pointer">
-                        Saya memahami bahwa down payment 50% tidak dapat dikembalikan setelah pengerjaan dimulai
-                      </label>
-                    </div>
+                    
+                    
                   </div>
                 </Card>
 
