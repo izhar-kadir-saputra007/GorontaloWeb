@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const Navigation = () => {
   const scrollToSection = (id: string) => {
@@ -26,34 +27,39 @@ const Navigation = () => {
           <span className="text-primary">Craft</span>
         </motion.div>
 
-        <div className="hidden md:flex items-center gap-8">
-          <button
-            onClick={() => scrollToSection("services")}
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Layanan
-          </button>
-          <button
-            onClick={() => scrollToSection("pricing")}
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Harga
-          </button>
-          <button
-            onClick={() => scrollToSection("why-us")}
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Mengapa Kami
-          </button>
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Kontak
-          </button>
+        <div className="flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-8">
+            <button
+              onClick={() => scrollToSection("services")}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Layanan
+            </button>
+            <button
+              onClick={() => scrollToSection("pricing")}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Harga
+            </button>
+            <button
+              onClick={() => scrollToSection("why-us")}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Mengapa Kami
+            </button>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Kontak
+            </button>
+          </div>
+          
+          <ThemeToggle />
+          
           <Button
             onClick={() => scrollToSection("contact")}
-            className="bg-gradient-to-r from-primary to-[hsl(338,100%,50%)] hover:opacity-90 transition-opacity"
+            className="bg-gradient-to-r from-primary to-[hsl(338,100%,50%)] hover:opacity-90 transition-opacity hidden md:flex"
           >
             Mulai Project
           </Button>

@@ -5,66 +5,76 @@ import { Card } from "@/components/ui/card";
 
 const pricingPlans = [
   {
-    name: "Starter",
-    price: "5.000.000",
+    name: "Basic",
+    price: "500.000",
     period: "One-time",
-    description: "Cocok untuk bisnis kecil dan personal website",
+    description: "Cocok untuk personal, toko kecil, atau UMKM baru mulai online",
     features: [
-      "Desain Modern & Responsif",
-      "Hingga 5 Halaman",
-      "Domain Gratis 1 Tahun",
-      "Hosting 1 Tahun",
-      "SEO Basic",
-      "SSL Certificate",
-      "Support 3 Bulan",
-      "Revisi 2x",
+      "Template Desain Responsif",
+      "1–2 Halaman (Home & Kontak)",
+      "Integrasi WhatsApp / Sosial Media",
+      "Upload ke Hosting Klien",
+      "1x Revisi Gratis",
+      "Support 1 Minggu",
     ],
     popular: false,
   },
   {
-    name: "Professional",
-    price: "12.000.000",
+    name: "Standard",
+    price: "1.500.000",
     period: "One-time",
-    description: "Ideal untuk bisnis yang sedang berkembang",
+    description: "Ideal untuk bisnis lokal atau profil usaha sederhana",
     features: [
-      "Desain Premium & Responsif",
-      "Hingga 10 Halaman",
-      "Domain Gratis 1 Tahun",
+      "Desain Menarik & Responsif",
+      "3–5 Halaman (Home, Tentang, Layanan, Galeri, Kontak)",
+      "Domain .my.id Gratis 1 Tahun",
       "Hosting 1 Tahun",
-      "SEO Advanced",
+      "Form Kontak & WhatsApp Button",
+      "SEO Dasar",
       "SSL Certificate",
-      "Support 6 Bulan",
-      "Revisi Unlimited",
-      "Integrasi Sosial Media",
-      "Google Analytics",
-      "Contact Form",
+      "Support 1 Bulan",
+      "2x Revisi",
     ],
     popular: true,
   },
   {
-    name: "Enterprise",
-    price: "25.000.000",
+    name: "Professional",
+    price: "2.000.000",
     period: "One-time",
-    description: "Solusi lengkap untuk bisnis besar",
+    description: "Cocok untuk perusahaan kecil atau startup dengan fitur tambahan",
     features: [
-      "Desain Custom & Responsif",
-      "Halaman Unlimited",
-      "Domain Gratis 1 Tahun",
-      "Hosting Premium 1 Tahun",
-      "SEO Premium + Maintenance",
+      "Desain Premium & Responsif",
+      "Hingga 10 Halaman",
+      "Domain + Hosting 1 Tahun",
+      "SEO Optimization",
       "SSL Certificate",
-      "Support 1 Tahun",
-      "Revisi Unlimited",
+      "Dashboard Admin Sederhana (Opsional)",
+      "Integrasi Google Maps & Form Kontak",
+      "Support 3 Bulan",
+      "Revisi Unlimited (minor)",
+    ],
+    popular: false,
+  },
+  {
+    name: "E-Commerce",
+    price: "3.000.000",
+    period: "One-time",
+    description: "Solusi lengkap untuk bisnis online dan toko digital",
+    features: [
+      "Desain Custom & Mobile Friendly",
+      "Manajemen Produk & Transaksi",
       "Dashboard Admin",
-      "E-commerce Integration",
-      "Payment Gateway",
-      "Live Chat",
-      "Email Marketing",
-      "Training & Documentation",
+      "Integrasi Pembayaran (Payment Gateway)",
+      "Laporan Penjualan",
+      "Domain + Hosting 1 Tahun",
+      "SSL Certificate",
+      "Support 6 Bulan",
+      "Revisi Unlimited",
     ],
     popular: false,
   },
 ];
+
 
 const Pricing = () => {
   const scrollToContact = () => {
@@ -91,7 +101,7 @@ const Pricing = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {pricingPlans.map((plan, index) => (
             <motion.div
               key={index}

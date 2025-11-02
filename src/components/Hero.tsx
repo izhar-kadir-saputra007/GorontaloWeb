@@ -1,13 +1,24 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
-import heroImage from "@/assets/hero-image.jpg";
+import { ArrowRight } from "lucide-react";
+import Lottie from "react-lottie";
+import developerAnimation from "@/assets/developer.json";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Konfigurasi Lottie
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: developerAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
     }
   };
 
@@ -25,16 +36,6 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="text-left"
           >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.3, type: "spring" }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border mb-6"
-            >
-              <Sparkles className="w-4 h-4 text-accent" />
-              <span className="text-sm text-muted-foreground">Website Profesional untuk Bisnis Anda</span>
-            </motion.div>
-
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               Wujudkan Website{" "}
               <span className="bg-gradient-to-r from-primary to-[hsl(338,100%,50%)] text-transparent bg-clip-text">
@@ -65,7 +66,7 @@ const Hero = () => {
                 size="lg"
                 variant="outline"
                 onClick={() => scrollToSection("contact")}
-                className="border-border hover:bg-secondary text-lg px-8 py-6"
+                className="border-border hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6"
               >
                 Konsultasi Gratis
               </Button>
@@ -96,32 +97,77 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Image */}
+          {/* Right Animation */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative hidden lg:block"
+            className="relative hidden lg:flex items-center justify-center"
           >
-            <div className="relative rounded-3xl overflow-hidden border border-primary/20 shadow-[0_0_50px_hsl(348,100%,60%,0.3)]">
-              <img 
-                src={heroImage} 
-                alt="Modern Web Development" 
-                className="w-full h-auto object-cover"
+            {/* Container utama untuk animasi */}
+            <div className="relative">
+              {/* Multiple shadow layers untuk efek yang lebih natural */}
+              
+              {/* Layer 1: Soft diffuse shadow */}
+              <div 
+                className="absolute inset-0 opacity-20 blur-3xl scale-110"
+                style={{
+                  background: "radial-gradient(ellipse at center, hsl(348, 100%, 60%) 0%, transparent 70%)",
+                  transform: "scale(1.1) translateY(10px)"
+                }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+              
+              {/* Layer 2: Medium shadow */}
+              <div 
+                className="absolute inset-0 opacity-25 blur-2xl scale-105"
+                style={{
+                  background: "radial-gradient(ellipse at center, hsl(338, 100%, 50%) 0%, transparent 60%)",
+                  transform: "scale(1.05) translateY(5px)"
+                }}
+              />
+              
+              {/* Layer 3: Sharp shadow */}
+              <div 
+                className="absolute inset-0 opacity-30 blur-xl"
+                style={{
+                  background: "radial-gradient(ellipse at center, hsl(328, 100%, 50%) 0%, transparent 50%)"
+                }}
+              />
+              
+              {/* Glow effect */}
+              <div 
+                className="absolute inset-0 opacity-15 blur-2xl animate-pulse"
+                style={{
+                  background: "radial-gradient(ellipse at center, hsl(348, 100%, 70%) 0%, transparent 70%)",
+                  animation: "pulse 4s ease-in-out infinite"
+                }}
+              />
+
+              {/* Animasi Lottie dengan filter drop-shadow */}
+              <div 
+                className="relative z-20"
+                style={{
+                  filter: "drop-shadow(0 10px 30px rgba(255, 65, 108, 0.3)) drop-shadow(0 5px 15px rgba(255, 65, 108, 0.4))"
+                }}
+              >
+                <Lottie 
+                  options={defaultOptions}
+                  height={500}
+                  width={500}
+                />
+              </div>
             </div>
             
             {/* Floating decorative elements */}
             <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary to-[hsl(338,100%,50%)] rounded-full opacity-20 blur-3xl"
+              className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary to-[hsl(338,100%,50%)] rounded-full opacity-15 blur-3xl"
             />
             <motion.div
               animate={{ y: [0, 20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -bottom-6 -left-6 w-40 h-40 bg-gradient-to-br from-accent to-[hsl(38,100%,50%)] rounded-full opacity-20 blur-3xl"
+              className="absolute -bottom-6 -left-6 w-40 h-40 bg-gradient-to-br from-accent to-[hsl(38,100%,50%)] rounded-full opacity-15 blur-3xl"
             />
           </motion.div>
         </div>
