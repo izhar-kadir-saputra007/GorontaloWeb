@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Lottie from "react-lottie";
-import developerAnimation from "@/assets/developer.json";
+import developerAnimation from "@/assets/Developer.json";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
