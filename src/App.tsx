@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Index from "./pages/Index";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
+import AuthPage from "./pages/AuthPage";
 import { HelmetProvider } from "react-helmet-async";
 
 // Import komponen baru untuk sistem pembayaran
@@ -35,6 +36,7 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/terms" element={<Terms />} />
+                <Route path="/auth" element={<AuthPage />} />
                 
                 {/* Routes untuk Sistem Pembayaran */}
           

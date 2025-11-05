@@ -69,27 +69,27 @@ const Terms = () => {
     {
       icon: FileText,
       title: "1. Penerimaan Syarat dan Ketentuan",
-      content: "Dengan menggunakan layanan WebCraft Studio dan melakukan pembayaran melalui sistem kami, Anda secara otomatis menyetujui semua syarat dan ketentuan yang tercantum di halaman ini. Transaksi yang dilakukan mengikat secara hukum."
+      content: "Dengan menggunakan layanan GorontaloWeb dan melakukan pembayaran melalui sistem kami, Anda secara otomatis menyetujui semua syarat dan ketentuan yang tercantum di halaman ini. Transaksi yang dilakukan mengikat secara hukum."
     },
     {
       icon: CreditCard,
-      title: "2. Sistem Pembayaran Midtrans",
-      content: "Kami menggunakan Midtrans sebagai payment gateway resmi. Semua transaksi diproses melalui sistem terenkripsi PCI DSS compliant. Pembayaran dapat dilakukan melalui berbagai channel termasuk QRIS dengan biaya administrasi sesuai ketentuan Midtrans."
+      title: "2. Sistem Pembayaran dan Biaya Awal",
+      content: "Kami menggunakan Midtrans sebagai payment gateway resmi. Pembayaran dapat dilakukan melalui berbagai channel termasuk QRIS dengan biaya administrasi sesuai ketentuan Midtrans. Untuk memulai pengerjaan project, diperlukan pembayaran awal sebesar 50% dari total biaya."
     },
     {
       icon: Shield,
       title: "3. Keamanan Transaksi",
-      content: "Midtrans menggunakan enkripsi SSL 128-bit dan sistem 3D Secure untuk transaksi kartu kredit. Data sensitif seperti informasi kartu kredit tidak disimpan di server kami. Semua transaksi tunduk pada verifikasi dan validasi oleh sistem Midtrans."
+      content: "Data sensitif seperti informasi kartu kredit tidak disimpan di server kami. Semua transaksi tunduk pada verifikasi dan validasi oleh sistem Midtrans."
     },
     {
       icon: Clock,
       title: "4. Konfirmasi dan Status Pembayaran",
-      content: "Setelah pembayaran berhasil, Anda akan menerima email konfirmasi otomatis dari Midtrans. Status project akan berubah menjadi 'Paid' dan pengerjaan dimulai dalam 1x24 jam. Pembayaran via QRIS biasanya diproses secara instan (1-2 menit)."
+      content: "Setelah pembayaran 50% berhasil, Anda akan menerima email konfirmasi otomatis. Status project akan berubah menjadi 'In Progress' dan pengerjaan dimulai dalam 1x24 jam. Pembayaran via QRIS biasanya diproses secara instan (1-2 menit)."
     },
     {
       icon: AlertCircle,
-      title: "5. Kebijakan Pembatalan dan Refund",
-      content: "Pembayaran yang sudah diproses tidak dapat dibatalkan secara sepihak. Refund hanya dapat dilakukan melalui permintaan tertulis dan dikenakan biaya administrasi 10%. Proses refund memerlukan waktu 7-14 hari kerja tergantung metode pembayaran."
+      title: "5. Kebijakan Pembayaran 50% di Awal",
+      content: "Pembayaran awal 50% diperlukan untuk memulai pengerjaan project. Sisa 50% dibayarkan setelah project selesai dan sebelum website di-deliver. Pembayaran yang sudah diproses tidak dapat dibatalkan secara sepihak."
     },
     {
       icon: RefreshCw,
@@ -99,12 +99,12 @@ const Terms = () => {
     {
       icon: Zap,
       title: "7. Timeline Pengerjaan",
-      content: "Estimasi pengerjaan: Basic 3-5 hari • Standard 7-10 hari • Professional 10-14 hari • E-Commerce 14-21 hari. Timeline mulai berjalan setelah pembayaran dikonfirmasi oleh Midtrans. Keterlambatan dari klien dalam memberikan konten dapat mempengaruhi timeline."
+      content: "Estimasi pengerjaan: Basic 3-5 hari • Standard 7-10 hari • Professional 10-14 hari • E-Commerce 14-21 hari. Timeline mulai berjalan setelah pembayaran 50% dikonfirmasi. Keterlambatan dari klien dalam memberikan konten dapat mempengaruhi timeline."
     },
     {
       icon: Code,
       title: "8. Kepemilikan dan Hak Cipta",
-      content: "Setelah pembayaran lunas, hak penggunaan website sepenuhnya menjadi milik klien. Kami berhak menampilkan project dalam portfolio. Source code framework dan library proprietary tetap menjadi hak milik developer."
+      content: "Setelah pembayaran lunas 100%, hak penggunaan website sepenuhnya menjadi milik klien. Kami berhak menampilkan project dalam portfolio. Source code framework dan library proprietary tetap menjadi hak milik developer."
     },
     {
       icon: Server,
@@ -129,9 +129,9 @@ const Terms = () => {
   ];
 
   const PaymentMethodCard = ({ icon: Icon, title, fees, items, note }) => (
-    <div className="p-4 bg-secondary/30 rounded-lg border border-border">
+    <div className="p-4 bg-secondary/30 rounded-lg border border-border hover:bg-secondary/50 hover:border-primary/30 transition-all duration-300 cursor-pointer">
       <div className="flex items-center gap-3 mb-3">
-        <div className="p-2 bg-primary/10 rounded-lg">
+        <div className="p-2 bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors duration-300">
           <Icon className="w-5 h-5 text-primary" />
         </div>
         <div>
@@ -172,9 +172,9 @@ const Terms = () => {
               Syarat & Ketentuan
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-6">
-              Ketentuan penggunaan layanan dan sistem pembayaran WebCraft Studio
+              Ketentuan penggunaan layanan dan sistem pembayaran GorontaloWeb
             </p>
-            <div className="bg-card border border-border rounded-2xl p-6 max-w-4xl mx-auto">
+            <div className="bg-card border border-border rounded-2xl p-6 max-w-4xl mx-auto hover:shadow-lg hover:border-primary/30 transition-all duration-300 cursor-pointer">
               <p className="text-muted-foreground">
                 <strong className="text-foreground">Penting:</strong> Dengan melakukan pembayaran melalui sistem Midtrans, Anda menyetujui semua syarat dan ketentuan di bawah ini. Mohon baca dengan seksama sebelum melanjutkan transaksi.
               </p>
@@ -182,7 +182,7 @@ const Terms = () => {
           </motion.div>
 
           <div className="grid lg:grid-cols-4 gap-8">
-            {/* Main Content */}
+            {/* Main Content - SYARAT & KETENTUAN dengan animasi hover biasa */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -192,14 +192,21 @@ const Terms = () => {
               {sections.map((section, index) => {
                 const IconComponent = section.icon;
                 return (
-                  <Card key={index} className="p-6 bg-card border-border hover:shadow-lg transition-all duration-300 group">
+                  <Card 
+                    key={index}
+                    className="p-6 bg-card border-border hover:shadow-xl hover:border-primary/40 hover:bg-card/80 transition-all duration-300 cursor-pointer group"
+                  >
                     <div className="flex items-start gap-4">
-                      <div className="p-3 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform">
-                        <IconComponent className="w-6 h-6 text-primary" />
+                      <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 group-hover:scale-105 transition-all duration-300">
+                        <IconComponent className="w-6 h-6 text-primary group-hover:text-primary/90 transition-colors duration-300" />
                       </div>
                       <div className="flex-1">
-                        <h2 className="text-xl font-bold text-foreground mb-3">{section.title}</h2>
-                        <p className="text-muted-foreground leading-relaxed">{section.content}</p>
+                        <h2 className="text-xl font-bold text-foreground mb-3 group-hover:text-foreground/90 transition-colors duration-300">
+                          {section.title}
+                        </h2>
+                        <p className="text-muted-foreground leading-relaxed group-hover:text-muted-foreground/90 transition-colors duration-300">
+                          {section.content}
+                        </p>
                       </div>
                     </div>
                   </Card>
@@ -215,7 +222,7 @@ const Terms = () => {
               className="space-y-6"
             >
               {/* Payment Info Card */}
-              <Card className="p-6 bg-card border-border">
+              <Card className="p-6 bg-card border-border hover:shadow-lg hover:border-primary/30 transition-all duration-300">
                 <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                   <CreditCard className="w-5 h-5 text-primary" />
                   Biaya Transaksi Midtrans
@@ -295,36 +302,25 @@ const Terms = () => {
               </Card>
 
               {/* QRIS Info Card */}
-              <Card className="p-6 bg-card border-border bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20">
+              <Card className="p-6 bg-card border-border bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 hover:shadow-lg hover:border-blue-300/30 transition-all duration-300">
                 <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
                   <QrCode className="w-5 h-5 text-blue-600" />
                   Cara Bayar dengan QRIS
                 </h3>
                 <div className="space-y-2 text-sm">
-                  <div className="flex items-start gap-2">
-                    <div className="w-5 h-5 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mt-0.5">
-                      <span className="text-xs font-bold text-blue-600">1</span>
+                  {[
+                    "Pilih QRIS di halaman checkout",
+                    "Scan QR code dengan aplikasi pembayaran",
+                    "Konfirmasi pembayaran di aplikasi",
+                    "Pembayaran selesai secara instan"
+                  ].map((step, index) => (
+                    <div key={index} className="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300 cursor-pointer">
+                      <div className="w-5 h-5 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mt-0.5 hover:scale-110 transition-transform duration-300">
+                        <span className="text-xs font-bold text-blue-600">{index + 1}</span>
+                      </div>
+                      <span className="text-muted-foreground">{step}</span>
                     </div>
-                    <span className="text-muted-foreground">Pilih QRIS di halaman checkout</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <div className="w-5 h-5 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mt-0.5">
-                      <span className="text-xs font-bold text-blue-600">2</span>
-                    </div>
-                    <span className="text-muted-foreground">Scan QR code dengan aplikasi pembayaran</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <div className="w-5 h-5 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mt-0.5">
-                      <span className="text-xs font-bold text-blue-600">3</span>
-                    </div>
-                    <span className="text-muted-foreground">Konfirmasi pembayaran di aplikasi</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <div className="w-5 h-5 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mt-0.5">
-                      <span className="text-xs font-bold text-blue-600">4</span>
-                    </div>
-                    <span className="text-muted-foreground">Pembayaran selesai secara instan</span>
-                  </div>
+                  ))}
                 </div>
                 <div className="mt-3 p-2 bg-blue-500/10 rounded">
                   <p className="text-xs text-blue-600">
@@ -334,66 +330,31 @@ const Terms = () => {
               </Card>
 
               {/* Support Card */}
-              <Card className="p-6 bg-card border-border">
+              <Card className="p-6 bg-card border-border hover:shadow-lg hover:border-primary/30 transition-all duration-300">
                 <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                   <MessageCircle className="w-5 h-5 text-primary" />
                   Butuh Bantuan?
                 </h3>
                 <div className="space-y-3">
                   <a 
-                    href="mailto:support@webcraftstudio.id" 
-                    className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors"
+                    href="mailto:izharkadirsaputra@gmail.com" 
+                    className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-secondary hover:translate-x-2 transition-all duration-300 cursor-pointer"
                   >
                     <Mail className="w-4 h-4 text-primary" />
                     <span className="text-sm">Email Support</span>
                   </a>
                   <a 
-                    href="https://wa.me/6281234567890" 
-                    className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors"
+                    href="https://wa.me/6282290316560" 
+                    className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-secondary hover:translate-x-2 transition-all duration-300 cursor-pointer"
                   >
                     <Phone className="w-4 h-4 text-primary" />
                     <span className="text-sm">WhatsApp</span>
                   </a>
                 </div>
-                <div className="mt-4 p-3 bg-blue-500/10 rounded-lg">
-                  <p className="text-xs text-blue-600">
-                    Untuk masalah pembayaran, hubungi Midtrans: 1500-366
-                  </p>
-                </div>
+               
               </Card>
             </motion.div>
           </div>
-
-          {/* CTA Section */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="mt-16 text-center"
-          >
-            <Card className="p-8 bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
-              <h3 className="text-2xl font-bold mb-4">Siap Memulai Project Anda?</h3>
-              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Pilih paket yang sesuai dengan kebutuhan bisnis Anda dan lakukan pembayaran dengan aman melalui Midtrans.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="/pricing" 
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
-                >
-                  <CreditCard className="w-4 h-4" />
-                  Lihat Paket & Harga
-                </a>
-                <a 
-                  href="/contact" 
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  Konsultasi Gratis
-                </a>
-              </div>
-            </Card>
-          </motion.div>
 
           {/* Footer Note */}
           <motion.div
@@ -407,8 +368,7 @@ const Terms = () => {
               month: "long", 
               day: "numeric" 
             })}</p>
-            <p className="mt-2">WebCraft Studio • Payment powered by Midtrans</p>
-           
+            <p className="mt-2">GorontaloWeb • Payment powered by Midtrans</p>
           </motion.div>
         </div>
       </main>

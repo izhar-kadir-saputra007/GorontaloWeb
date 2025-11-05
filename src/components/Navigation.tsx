@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Link } from "react-router-dom"; // Import Link
 
 const Navigation = () => {
   const scrollToSection = (id: string) => {
@@ -23,8 +24,8 @@ const Navigation = () => {
           transition={{ delay: 0.2 }}
           className="text-2xl font-bold"
         >
-          <span className="text-foreground">Web</span>
-          <span className="text-primary">Craft</span>
+          <span className="text-foreground">Gorontalo</span>
+          <span className="text-primary">Web</span>
         </motion.div>
 
         <div className="flex items-center gap-4">
@@ -57,11 +58,11 @@ const Navigation = () => {
           
           <ThemeToggle />
           
-          <Button
-            onClick={() => scrollToSection("contact")}
-            className="bg-gradient-to-r from-primary to-[hsl(338,100%,50%)] hover:opacity-90 transition-opacity hidden md:flex"
-          >
-            Mulai Project
+          {/* Tombol Mulai Project dengan Link ke Auth */}
+          <Button asChild className="bg-gradient-to-r from-primary to-[hsl(338,100%,50%)] hover:opacity-90 transition-opacity hidden md:flex">
+            <Link to="/auth">
+              Mulai Project
+            </Link>
           </Button>
         </div>
       </div>

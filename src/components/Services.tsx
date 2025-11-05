@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Code, Palette, Zap, Shield, Smartphone, TrendingUp } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import SpotlightCard from './reactbits/SpotlightCard'; // Import SpotlightCard
 
 const services = [
   {
@@ -46,14 +46,14 @@ const Services = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Layanan <span className="text-primary">Kami</span>
+            Layanan <span className="text-primary">Premium</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Solusi lengkap untuk kebutuhan website bisnis Anda
+            Solusi digital lengkap dengan teknologi terkini untuk bisnis masa depan
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -62,11 +62,18 @@ const Services = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="p-8 bg-card border-border hover:border-primary/50 transition-all duration-300 group hover:shadow-[0_0_30px_hsl(348,100%,60%,0.2)] h-full">
-                <service.icon className="w-12 h-12 text-primary mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-2xl font-bold mb-3 text-foreground">{service.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-              </Card>
+              <SpotlightCard 
+                className="p-8 bg-card border-border group h-full backdrop-blur-sm"
+                spotlightColor="rgba(255, 65, 108, 0.15)" // Warna primary Anda
+              >
+                <service.icon className="w-12 h-12 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors">
+                  {service.description}
+                </p>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>

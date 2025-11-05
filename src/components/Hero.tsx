@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Lottie from "react-lottie";
 import developerAnimation from "@/assets/Developer.json";
+import { useState, useEffect } from "react";
+import RotatingText from './reactbits/RotatingText';
+import Particles from './reactbits/Particles'; 
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -22,10 +25,69 @@ const Hero = () => {
     }
   };
 
+  // Komponen untuk animasi perhitungan
+  const AnimatedCounter = ({ target, label }: { target: number; label: string }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+      let start = 0;
+      const duration = 3000; // 3 detik total
+      const increment = target / (duration / 50); // Increment per frame (50ms)
+      
+      const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4); // Easing function untuk slow down di akhir
+      
+      const timer = setInterval(() => {
+        const progress = Math.min(start / target, 1); // Progress 0-1
+        const easedProgress = easeOutQuart(progress);
+        const currentCount = Math.min(Math.floor(easedProgress * target), target);
+        
+        setCount(currentCount);
+        
+        if (start < target) {
+          start += increment;
+        } else {
+          setCount(target);
+          clearInterval(timer);
+        }
+      }, 50);
+
+      return () => clearInterval(timer);
+    }, [target]);
+
+    return (
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ type: "spring" }}
+        className="text-center"
+      >
+        <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+          {count}+
+        </div>
+        <div className="text-sm text-muted-foreground">{label}</div>
+      </motion.div>
+    );
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-card/50" />
+      {/* Particles Background */}
+      {/* Particles Background */}
+<div className="absolute inset-0">
+<Particles
+  particleColors={['#FF416C', '#FF4B2B', '#FFC107']}
+  particleCount={80}
+  particleSpread={5}
+  speed={0.1}
+  particleBaseSize={200}
+  moveParticlesOnHover={true}
+  particleHoverFactor={2}
+  alphaParticles={false}
+/>
+</div>
+      
+      {/* Overlay gradient untuk readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/70 to-card/40" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -36,17 +98,41 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="text-left"
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Wujudkan Website{" "}
-              <span className="bg-gradient-to-r from-primary to-[hsl(338,100%,50%)] text-transparent bg-clip-text">
-                Impian Anda
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              Transformasi Digital{" "}
+              <span className="block mt-2">
+                <RotatingText
+                  texts={[
+                    'Website Premium',
+                    'E-Commerce Eksklusif', 
+                    'Company Profile Elite',
+                    'Landing Page Konversi Tinggi',
+                    'Web App Berkualitas'
+                  ]}
+                  mainClassName="inline-flex px-6 py-3 bg-primary/15 rounded-2xl border border-primary/30 overflow-hidden backdrop-blur-sm shadow-lg"
+                  staggerFrom={"last"}
+                  initial={{ y: "120%", rotateX: -90 }}
+                  animate={{ y: 0, rotateX: 0 }}
+                  exit={{ y: "-130%", rotateX: 90 }}
+                  staggerDuration={0.025}
+                  splitLevelClassName="overflow-hidden"
+                  transition={{ type: "spring", damping: 25, stiffness: 400 }}
+                  rotationInterval={3200}
+                  elementLevelClassName="bg-gradient-to-r from-primary via-[hsl(338,100%,50%)] to-[hsl(328,100%,50%)] text-transparent bg-clip-text font-extrabold tracking-tight"
+                />
               </span>
+              {" "}Untuk Bisnis Anda
             </h1>
 
-            <p className="text-xl text-muted-foreground mb-8">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-xl text-muted-foreground mb-8"
+            >
               Jasa pembuatan website modern, responsif, dan SEO friendly dengan harga terjangkau. 
               Tingkatkan bisnis Anda dengan kehadiran online yang profesional.
-            </p>
+            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -57,7 +143,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 onClick={() => scrollToSection("pricing")}
-                className="bg-gradient-to-r from-primary to-[hsl(338,100%,50%)] hover:opacity-90 transition-opacity text-lg px-8 py-6 animate-glow-pulse group"
+                className="bg-gradient-to-r from-primary to-[hsl(338,100%,50%)] hover:opacity-90 transition-opacity text-lg px-8 py-6 animate-glow-pulse group backdrop-blur-sm border border-primary/30"
               >
                 Lihat Paket Harga
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -66,7 +152,7 @@ const Hero = () => {
                 size="lg"
                 variant="outline"
                 onClick={() => scrollToSection("contact")}
-                className="border-border hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6"
+                className="border-border hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6 backdrop-blur-sm"
               >
                 Konsultasi Gratis
               </Button>
@@ -78,22 +164,17 @@ const Hero = () => {
               transition={{ delay: 1 }}
               className="grid grid-cols-3 gap-6"
             >
-              {[
-                { number: "100+", label: "Project Selesai" },
-                { number: "50+", label: "Klien Puas" },
-                { number: "24/7", label: "Support" },
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 1 + index * 0.1, type: "spring" }}
-                  className="text-center"
-                >
-                  <div className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.number}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </motion.div>
-              ))}
+              <AnimatedCounter target={100} label="Project Selesai" />
+              <AnimatedCounter target={50} label="Klien Puas" />
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring" }}
+                className="text-center"
+              >
+                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">24/7</div>
+                <div className="text-sm text-muted-foreground">Support</div>
+              </motion.div>
             </motion.div>
           </motion.div>
 

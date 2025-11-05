@@ -7,8 +7,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="text-2xl font-bold mb-4">
-              <span className="text-foreground">Web</span>
-              <span className="text-primary">Craft</span>
+              <span className="text-foreground">Gorontalo</span>
+              <span className="text-primary">Web</span>
             </div>
             <p className="text-muted-foreground text-sm">
               Jasa pembuatan website profesional untuk mengembangkan bisnis Anda.
@@ -49,15 +49,15 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-foreground mb-4">Kontak</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>+62 812-3456-7890</li>
-              <li>info@webcraftstudio.id</li>
-              <li>Jakarta, Indonesia</li>
+              <li>+62 822 9031 6560</li>
+              <li>izharkadirsaputra@gmail.com</li>
+              <li>Jl Arief rachman hakim, Dulalowo Tim., Kec. Kota Tengah, Kota Gorontalo, Gorontalo</li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} WebCraft Studio. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} GorontaloWeb. All rights reserved.</p>
         </div>
       </div>
     </footer>
