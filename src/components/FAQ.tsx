@@ -157,62 +157,71 @@ const FAQ = () => {
             ))}
           </motion.div>
 
-          {/* Right Side - Lottie Animation */}
-   <motion.div
-  initial={{ opacity: 0, x: 50 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.6, delay: 0.2 }}
-  viewport={{ once: true }}
-  className="hidden lg:flex items-center justify-center sticky top-24"
->
-  <div className="relative">
-    {/* Background Glow Effect - menggunakan primary color */}
-    <div 
-      className="absolute inset-0 opacity-10 blur-xl scale-105"
-      style={{
-        background: "radial-gradient(ellipse at center, hsl(348, 95%, 55%) 0%, transparent 70%)",
-        transform: "scale(1.05) translateY(5px)"
-      }}
-    />
-    
-    {/* Medium shadow - menggunakan accent color */}
-    <div 
-      className="absolute inset-0 opacity-15 blur-lg"
-      style={{
-        background: "radial-gradient(ellipse at center, hsl(48, 95%, 55%) 0%, transparent 60%)"
-      }}
-    />
+          {/* Right Side - Lottie Animation - SEKARANG TAMPIL DI MOBILE JUGA */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center" // ← HAPUS "hidden lg:flex" dan "sticky top-24"
+          >
+            <div className="relative">
+              {/* Background Glow Effect - menggunakan primary color */}
+              <div 
+                className="absolute inset-0 opacity-10 blur-xl scale-105"
+                style={{
+                  background: "radial-gradient(ellipse at center, hsl(348, 95%, 55%) 0%, transparent 70%)",
+                  transform: "scale(1.05) translateY(5px)"
+                }}
+              />
+              
+              {/* Medium shadow - menggunakan accent color */}
+              <div 
+                className="absolute inset-0 opacity-15 blur-lg"
+                style={{
+                  background: "radial-gradient(ellipse at center, hsl(48, 95%, 55%) 0%, transparent 60%)"
+                }}
+              />
 
-    {/* Lottie Animation dengan glow effect menggunakan primary color */}
-    <div 
-      className="relative z-20"
-      style={{
-        filter: "drop-shadow(0 5px 15px rgba(348, 95%, 55%, 0.2)) drop-shadow(0 2px 8px rgba(348, 95%, 55%, 0.3))"
-      }}
-    >
-      <Lottie 
-        options={defaultOptions}
-        height={400}
-        width={400}
-      />
-    </div>
+              {/* Lottie Animation dengan ukuran responsif */}
+              <div 
+                className="relative z-20"
+                style={{
+                  filter: "drop-shadow(0 5px 15px rgba(348, 95%, 55%, 0.2)) drop-shadow(0 2px 8px rgba(348, 95%, 55%, 0.3))"
+                }}
+              >
+                {/* Ukuran desktop */}
+                <div className="hidden lg:block">
+                  <Lottie 
+                    options={defaultOptions}
+                    height={400}
+                    width={400}
+                  />
+                </div>
+                {/* Ukuran mobile */}
+                <div className="lg:hidden">
+                  <Lottie 
+                    options={defaultOptions}
+                    height={300}
+                    width={300}
+                  />
+                </div>
+              </div>
 
-    {/* Floating decorative elements - menggunakan primary dan accent */}
-    <motion.div
-      animate={{ y: [0, -15, 0] }}
-      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-full opacity-5 blur-xl"
-    />
-    <motion.div
-      animate={{ y: [0, 15, 0] }}
-      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-      className="absolute -bottom-4 -left-4 w-28 h-28 bg-gradient-to-br from-primary to-accent rounded-full opacity-5 blur-xl"
-    />
-  </div>
-</motion.div>
+              {/* Floating decorative elements - sembunyikan di mobile */}
+              <motion.div
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-full opacity-5 blur-xl hidden lg:block"
+              />
+              <motion.div
+                animate={{ y: [0, 15, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute -bottom-4 -left-4 w-28 h-28 bg-gradient-to-br from-primary to-accent rounded-full opacity-5 blur-xl hidden lg:block"
+              />
+            </div>
+          </motion.div>
         </div>
-
-
       </div>
     </section>
   );

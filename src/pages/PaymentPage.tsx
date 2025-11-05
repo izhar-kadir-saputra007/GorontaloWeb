@@ -381,7 +381,7 @@ const PaymentPage = () => {
               </div>
             </Card>
             {/* Security Info */}
-            // Security Info dengan penekanan pada Midtrans
+        
             <Card className="p-6 bg-green-500/5 border-green-500/20">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0">
