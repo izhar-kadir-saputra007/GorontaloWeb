@@ -72,19 +72,18 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Particles Background */}
-      {/* Particles Background */}
-<div className="absolute inset-0">
-<Particles
-  particleColors={['#FF416C', '#FF4B2B', '#FFC107']}
-  particleCount={80}
-  particleSpread={5}
-  speed={0.1}
-  particleBaseSize={200}
-  moveParticlesOnHover={true}
-  particleHoverFactor={2}
-  alphaParticles={false}
-/>
-</div>
+      <div className="absolute inset-0">
+        <Particles
+          particleColors={['#FF416C', '#FF4B2B', '#FFC107']}
+          particleCount={80}
+          particleSpread={5}
+          speed={0.1}
+          particleBaseSize={200}
+          moveParticlesOnHover={true}
+          particleHoverFactor={2}
+          alphaParticles={false}
+        />
+      </div>
       
       {/* Overlay gradient untuk readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/70 to-card/40" />
@@ -178,12 +177,12 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Animation */}
+          {/* Right Animation - SEKARANG TAMPIL DI MOBILE JUGA */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative hidden lg:flex items-center justify-center"
+            className="relative flex items-center justify-center" // ← HAPUS "hidden lg:flex"
           >
             {/* Container utama untuk animasi */}
             <div className="relative">
@@ -224,31 +223,42 @@ const Hero = () => {
                 }}
               />
 
-              {/* Animasi Lottie dengan filter drop-shadow */}
+              {/* Animasi Lottie dengan ukuran responsif */}
               <div 
                 className="relative z-20"
                 style={{
                   filter: "drop-shadow(0 10px 30px rgba(255, 65, 108, 0.3)) drop-shadow(0 5px 15px rgba(255, 65, 108, 0.4))"
                 }}
               >
-                <Lottie 
-                  options={defaultOptions}
-                  height={500}
-                  width={500}
-                />
+                {/* Ukuran desktop */}
+                <div className="hidden lg:block">
+                  <Lottie 
+                    options={defaultOptions}
+                    height={500}
+                    width={500}
+                  />
+                </div>
+                {/* Ukuran mobile */}
+                <div className="lg:hidden">
+                  <Lottie 
+                    options={defaultOptions}
+                    height={350}
+                    width={350}
+                  />
+                </div>
               </div>
             </div>
             
-            {/* Floating decorative elements */}
+            {/* Floating decorative elements - sembunyikan di mobile jika terlalu ramai */}
             <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary to-[hsl(338,100%,50%)] rounded-full opacity-15 blur-3xl"
+              className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary to-[hsl(338,100%,50%)] rounded-full opacity-15 blur-3xl hidden lg:block"
             />
             <motion.div
               animate={{ y: [0, 20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -bottom-6 -left-6 w-40 h-40 bg-gradient-to-br from-accent to-[hsl(38,100%,50%)] rounded-full opacity-15 blur-3xl"
+              className="absolute -bottom-6 -left-6 w-40 h-40 bg-gradient-to-br from-accent to-[hsl(38,100%,50%)] rounded-full opacity-15 blur-3xl hidden lg:block"
             />
           </motion.div>
         </div>

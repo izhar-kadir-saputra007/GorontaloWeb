@@ -64,7 +64,7 @@ const Services = () => {
             >
               <SpotlightCard 
                 className="p-8 bg-card border-border group h-full backdrop-blur-sm"
-                spotlightColor="rgba(255, 65, 108, 0.15)" // Warna primary Anda
+                spotlightColor="rgba(255, 65, 108, 0.7)" // Warna primary Anda
               >
                 <service.icon className="w-12 h-12 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">

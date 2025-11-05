@@ -163,13 +163,13 @@ const Contact = () => {
           >
             <Card className="p-8 md:p-12 bg-gradient-to-br from-primary/10 to-[hsl(338,100%,50%)]/10 border-primary/20 overflow-hidden">
               <div className="grid lg:grid-cols-2 gap-8 items-center">
-                {/* Animasi Lottie di Kiri dengan Shadow Sesuai Bentuk */}
+                {/* Animasi Lottie - SEKARANG TAMPIL DI MOBILE JUGA */}
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="relative hidden lg:block"
+                  className="relative" // ← HAPUS "hidden lg:block"
                 >
                   {/* Container utama dengan shadow yang mengikuti bentuk */}
                   <div className="relative flex items-center justify-center">
@@ -251,11 +251,22 @@ const Contact = () => {
                           filter: "drop-shadow(0 8px 25px rgba(255, 65, 108, 0.4)) drop-shadow(0 4px 12px rgba(255, 65, 108, 0.3))"
                         }}
                       >
-                        <Lottie 
-                          options={contactAnimationOptions}
-                          height={300}
-                          width={300}
-                        />
+                        {/* Ukuran responsif untuk mobile */}
+                        <div className="hidden lg:block">
+                          <Lottie 
+                            options={contactAnimationOptions}
+                            height={300}
+                            width={300}
+                          />
+                        </div>
+                        {/* Ukuran lebih kecil untuk mobile */}
+                        <div className="lg:hidden">
+                          <Lottie 
+                            options={contactAnimationOptions}
+                            height={250}
+                            width={250}
+                          />
+                        </div>
                       </div>
                     </div>
 

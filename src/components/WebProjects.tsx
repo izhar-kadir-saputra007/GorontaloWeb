@@ -18,83 +18,90 @@ import {
   MessageCircle,
 } from "lucide-react";
 
-// Data dummy projects - ganti dengan project asli Anda
+import agrikultur_usaha_tani_nilam from "@/assets/portofolio/agrikultur_usaha_tani_nilam.png";
+import herbalife_Marathon from "@/assets/portofolio/herbalife_Marathon.png";
+import jasa_peminjaman_kamera from "@/assets/portofolio/jasa_peminjaman kamera.png";
+import layanan_olah_data_bansos from "@/assets/portofolio/layanan_olah_data_bansos_terintegrasi_AI.png";
+import Toko_makanan_kucing from "@/assets/portofolio/Toko_makanan_kucing.png";
+import web_rekrutmen from "@/assets/portofolio/Web_rekrutmen dengan_machine_learning.png";
+
+// Data real projects dengan gambar yang sudah diimport
 const webProjects = [
   {
     id: 1,
-    title: "E-Commerce Fashion Store",
+    title: "Sistem Agrikultur Tani Nilam",
     description:
-      "Website e-commerce modern dengan integrasi payment gateway dan admin dashboard yang powerful.",
-    image: "/projects/fashion-store.jpg",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe", "Prisma"],
-    category: "E-Commerce",
-    liveUrl: "https://fashion-store.demo",
-    githubUrl: "https://github.com/username/fashion-store",
+      "Website untuk usaha tani nilam dengan fitur monitoring pertumbuhan tanaman dan manajemen hasil panen.",
+    image: agrikultur_usaha_tani_nilam,
+    technologies: ["React", "Node.js", "MongoDB", "Chart.js", "Leaflet"],
+    category: "Web App",
+    liveUrl: "https://fe-agrikultur-nilam.vercel.app/",
+    githubUrl: "https://fe-agrikultur-nilam.vercel.app/",
     featured: true,
     status: "Completed",
   },
   {
     id: 2,
-    title: "Restaurant Management System",
+    title: "Herbalife Marathon Event",
     description:
-      "Sistem manajemen restoran lengkap dengan POS, inventory, dan analytics.",
-    image: "/projects/restaurant-system.jpg",
-    technologies: ["React", "Node.js", "MongoDB", "Express", "Socket.io"],
-    category: "Web App",
-    liveUrl: "https://restaurant.demo",
-    githubUrl: "https://github.com/username/restaurant-system",
+      "Website event marathon dengan sistem pendaftaran online, tracking peserta, dan live results.",
+    image: herbalife_Marathon,
+    technologies: ["Next.js", "TypeScript", "Stripe", "Firebase", "Tailwind"],
+    category: "Event Website",
+    liveUrl: "https://indonesiarun.my.id/",
+    githubUrl: "https://indonesiarun.my.id/",
     featured: true,
     status: "Completed",
   },
   {
     id: 3,
-    title: "Portfolio Company Profile",
+    title: "Jasa Peminjaman Kamera",
     description:
-      "Website company profile modern dengan animasi smooth dan SEO optimized.",
-    image: "/projects/company-profile.jpg",
-    technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "Vercel"],
-    category: "Company Profile",
-    liveUrl: "https://company.demo",
-    githubUrl: "https://github.com/username/company-profile",
+      "Platform peminjaman kamera profesional dengan sistem booking, inventory, dan payment gateway.",
+    image: jasa_peminjaman_kamera,
+    technologies: ["Vue.js", "Laravel", "MySQL", "Midtrans", "Redis"],
+    category: "E-Commerce",
+    liveUrl: "https://cam-smooth-show.vercel.app/",
+    githubUrl: "https://cam-smooth-show.vercel.app/",
     featured: false,
     status: "Completed",
   },
   {
     id: 4,
-    title: "Learning Management System",
+    title: "Sistem Olah Data Bansos AI",
     description:
-      "Platform e-learning dengan video streaming, quiz, dan progress tracking.",
-    image: "/projects/lms.jpg",
-    technologies: ["Vue.js", "Laravel", "MySQL", "AWS S3", "Redis"],
+      "Aplikasi pengolahan data bantuan sosial terintegrasi AI untuk analisis dan distribusi yang tepat sasaran.",
+    image: layanan_olah_data_bansos,
+    technologies: ["Python", "Django", "PostgreSQL", "TensorFlow", "Docker"],
     category: "Web App",
-    liveUrl: "https://lms.demo",
-    githubUrl: "https://github.com/username/lms",
+    liveUrl: "https://landingpage-pemogramanweb.vercel.app/",
+    githubUrl: "https://landingpage-pemogramanweb.vercel.app/",
     featured: true,
     status: "Completed",
   },
   {
     id: 5,
-    title: "Travel Booking Platform",
+    title: "Toko Makanan Kucing Online",
     description:
-      "Platform booking travel dengan integrasi multiple payment methods dan real-time notifications.",
-    image: "/projects/travel-booking.jpg",
-    technologies: ["React", "Python Django", "PostgreSQL", "Redis", "Docker"],
-    category: "Booking System",
-    liveUrl: "https://travel.demo",
-    githubUrl: "https://github.com/username/travel-booking",
+      "E-commerce khusus produk makanan kucing dengan kategori breed-specific dan subscription box.",
+    image: Toko_makanan_kucing,
+    technologies: ["Next.js", "Strapi", "PostgreSQL", "Razorpay", "AWS S3"],
+    category: "E-Commerce",
+    liveUrl: "https://toko-makanan-kucing-9a41.vercel.app/",
+    githubUrl: "https://toko-makanan-kucing-9a41.vercel.app/",
     featured: false,
     status: "Completed",
   },
   {
     id: 6,
-    title: "Healthcare Telemedicine",
+    title: "Web Rekrutmen Machine Learning",
     description:
-      "Aplikasi telemedicine dengan video consultation, e-prescription, dan medical records.",
-    image: "/projects/telemedicine.jpg",
-    technologies: ["Next.js", "Firebase", "WebRTC", "Stripe", "Twilio"],
-    category: "Healthcare",
-    liveUrl: "https://telemedicine.demo",
-    githubUrl: "https://github.com/username/telemedicine",
+      "Sistem rekrutmen cerdas dengan fitur screening CV otomatis menggunakan machine learning.",
+    image: web_rekrutmen,
+    technologies: ["React", "FastAPI", "MongoDB", "Scikit-learn", "NLP"],
+    category: "Web App",
+    liveUrl: "https://fronend-cvision.vercel.app/",
+    githubUrl: "https://fronend-cvision.vercel.app/",
     featured: true,
     status: "Completed",
   },
@@ -104,9 +111,8 @@ const categories = [
   "All",
   "E-Commerce",
   "Web App",
+  "Event Website",
   "Company Profile",
-  "Booking System",
-  "Healthcare",
 ];
 
 const WebProjects = () => {
@@ -133,7 +139,7 @@ const WebProjects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15, // Increased stagger for better visual effect
+        staggerChildren: 0.15,
         delayChildren: 0.1,
       },
     },
@@ -143,7 +149,7 @@ const WebProjects = () => {
   const cardVariants = {
     hidden: {
       opacity: 0,
-      y: 60, // Start from further down
+      y: 60,
       scale: 0.9,
     },
     visible: {
@@ -335,7 +341,7 @@ const WebProjects = () => {
               <motion.div variants={hoverVariants} className="h-full">
                 <Card className="h-full bg-card border-border overflow-hidden group-hover:shadow-2xl group-hover:border-primary/30 transition-all duration-500 hover:bg-card/95">
                   {/* Project Image */}
-                  <div className="relative overflow-hidden bg-background h-48">
+                  <div className="relative overflow-hidden bg-background h-56 md:h-64 lg:h-72">
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10" />
 
                     {/* Featured Badge */}
@@ -379,12 +385,35 @@ const WebProjects = () => {
                     </motion.div>
 
                     {/* Hover Overlay */}
-              
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                      className="absolute inset-0 bg-primary/20 z-10 flex items-center justify-center gap-4"
+                    >
+                      <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="p-3 bg-background/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                        onClick={() => window.open(project.liveUrl, '_blank')}
+                      >
+                        <Eye className="w-5 h-5" />
+                      </motion.button>
+                      <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="p-3 bg-background/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                        onClick={() => window.open(project.githubUrl, '_blank')}
+                      >
+                        <Github className="w-5 h-5" />
+                      </motion.button>
+                    </motion.div>
 
-                    {/* Placeholder untuk gambar - ganti dengan gambar actual */}
-                    <div className="w-full h-full flex items-center justify-center bg-muted/30">
-                      <div className="text-4xl">🌐</div>
-                    </div>
+                    {/* Gambar Actual */}
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
                   </div>
 
                   {/* Project Content */}
